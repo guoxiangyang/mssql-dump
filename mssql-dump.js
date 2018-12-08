@@ -106,11 +106,13 @@ var sql = Mssql.connect(config, function (err) {
     if (err) {
 	console.error(err);
     } else {
+	console.log("Server connected...");
 	const request = new Mssql.Request();
 	request.stream = true;
 
 	function dump_table() {
 	    table_name = tables.shift();
+	    console.log("Dump:", table_name, "...");
 	    if (fd) {
 		fs.closeSync(fd);
 	    }
